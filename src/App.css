@@ -1,42 +1,95 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+    --fill-white: white;
+    --fill-gray: #f7f5f5;
+    --mid-gray: #c9c9c9;
+    --logo: url("./src/assets/logo.svg");
+    --person: url("./src/assets/person.svg");
+    --eyeOpen: url("./src/assets/eyeOpen.svg");
+    --eyeClose: url("./src/assets/eyeClose.svg");
+    --cancel: url("./src/assets/cancel.svg");
+    --lock: url("./src/assets/lock.svg");
+    --logout: url("./src/assets/logout.svg");
+    --search: url("./src/assets/search.svg");
+    --leftArrow: url("./src/assets/leftArrow.svg");
+    --dotsCircle: url("./src/assets/dotsCircle.svg");
+    --frame: url("./src/assets/frame.svg");
+    --update: url("./src/assets/update.svg");
+    --add: url("./src/assets/add.svg");
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+:root.dark {
+    --logo: url("./src/assets/logoDark.svg");
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.bcg {
+    background-color: green;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.bold {
+    font-weight: bold;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bolder {
+    font-weight: bolder;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.imgBack {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-
-.card {
-  padding: 2em;
+.cred {
+    color: red;
 }
-
-.read-the-docs {
-  color: #888;
+.cgray {
+    color: #b8b6b6;
+}
+.cdgray {
+    color: #a6a4a4;
+}
+.cp {
+    cursor: pointer;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-16 {
+    margin-top: 16px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.mt-40 {
+    margin-top: 40px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.ml-8 {
+    margin-left: 8px;
+}
+.mr-8 {
+    margin-right: 8px;
+}
+.pl-10 {
+    padding-left: 10px;
+}
+.pl-5 {
+    padding-left: 5px;
+}
+.pr-10 {
+    padding-right: 10px;
+}
+.pr-30 {
+    padding-right: 30px;
+}
+.pl-30 {
+    padding-left: 30px;
+}
+.pt-30 {
+    padding-top: 30px;
+}
+.pb-30 {
+    padding-bottom: 30px;
+}
+.fs-17 {
+    font-size: 17px;
 }
