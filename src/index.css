@@ -2,11 +2,6 @@
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    --logo: url("./src/assets/logo.svg");
-    /* font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
 }
 html,
 body,
@@ -25,4 +20,11 @@ input {
     font-size: 18px;
     display: flex;
     align-items: flex-end;
+}
+button {
+    outline: none;
+    border: 1px solid transparent;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
 }

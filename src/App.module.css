@@ -44,6 +44,20 @@
     justify-content: center;
     backdrop-filter: blur(2px);
 }
+/* .AddNotify */
+.AddNotify {
+    height: 70px;
+    width: 200px;
+    background-color: var(--fill-gray);
+    border: 1px solid var(--mid-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 /* LoginPage */
 .LoginPage_back {
     height: 100%;
@@ -312,6 +326,8 @@
     border-radius: 6px;
     color: white;
     user-select: none;
+    font-size: 16px;
+    font-weight: bolder;
 }
 .GoodsPage_main_handlers_add:hover {
     opacity: 0.8;

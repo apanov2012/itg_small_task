@@ -2,7 +2,7 @@ import { create, type StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
 import type { IGoodOne } from "../types";
 import { getGoodsList } from "../services/goodsApiService";
-export const paginationStep = 10;
+export const paginationStep = 50;
 interface IGoodsState {
     goodsList: IGoodOne[];
     total: number;
@@ -24,6 +24,7 @@ interface IGoodsState {
         brand: string;
         sku: string;
     };
+    addNotification: boolean;
 }
 interface IGoodsActions {
     updateGoodsList: () => void;
@@ -36,6 +37,7 @@ interface IGoodsActions {
     setAddGood: (addGood: boolean) => void;
     setNewGoodField: (field: string, value: string) => void;
     addNewGood: () => void;
+    showNotification: () => void;
 }
 interface IGoodsInitialState {
     goodsList: IGoodOne[];
@@ -58,6 +60,7 @@ interface IGoodsInitialState {
         brand: string;
         sku: string;
     };
+    addNotification: boolean;
 }
 interface IGoodsStore extends IGoodsState, IGoodsActions {}
 const GoodsInitialState: IGoodsInitialState = {
@@ -80,7 +83,8 @@ const GoodsInitialState: IGoodsInitialState = {
         price: "",
         brand: "",
         sku: ""
-    }
+    },
+    addNotification: false
 };
 const GoodsStore: StateCreator<IGoodsStore, [["zustand/devtools", never]]> = (
     set,
@@ -179,6 +183,17 @@ const GoodsStore: StateCreator<IGoodsStore, [["zustand/devtools", never]]> = (
             addGood: false,
             newGoodFields: GoodsInitialState.newGoodFields
         }));
+        get().showNotification();
+    },
+    showNotification: () => {
+        set({
+            addNotification: true
+        });
+        setTimeout(() => {
+            set({
+                addNotification: false
+            });
+        }, 1500);
     }
 });
 export const useGoodsStore = create<IGoodsStore>()(

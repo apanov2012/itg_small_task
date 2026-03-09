@@ -69,12 +69,13 @@ const LoginPage = () => {
                                     }
                                 />
                                 {username && (
-                                    <div
+                                    <button
+                                        type="button"
                                         className={`${styles.LoginPage_form_main_item_input_cancel_img} imgBack cp`}
                                         onClick={() =>
                                             setLoginInfo("username", "")
                                         }
-                                    ></div>
+                                    ></button>
                                 )}
                             </div>
                         </div>
@@ -103,32 +104,35 @@ const LoginPage = () => {
                                     }
                                 />
 
-                                <div
+                                <button
+                                    type="button"
                                     className={`${passIsVisible ? styles.LoginPage_form_main_item_input_visible_img : styles.LoginPage_form_main_item_input_invisible_img} imgBack cp`}
                                     onClick={() =>
                                         setPassIsVisible(!passIsVisible)
                                     }
-                                ></div>
+                                ></button>
                             </div>
                         </div>
                     </div>
                     {/* remember */}
-                    <div
-                        className={`${styles.LoginPage_form_main_isRemember_back} mt-20 cp`}
+                    <button
+                        type="button"
+                        className={`${styles.LoginPage_form_main_isRemember_back} mt-20 cp fs-16`}
                         onClick={() => setIsRemember(!isRemember)}
                     >
                         <div
                             className={`${styles.LoginPage_form_main_isRemember_checkbox} ${isRemember ? styles.LoginPage_form_main_isRemember_checkbox_checked : ""} cp`}
                         ></div>
                         <span className="ml-10 cdgray">{`Запомнить данные`}</span>
-                    </div>
+                    </button>
                     {/* submit */}
-                    <div
-                        className={`${username && password ? styles.LoginPage_form_main_submit : styles.LoginPage_form_main_submit_unactive} mt-20`}
+                    <button
+                        type="button"
+                        className={`${username && password ? styles.LoginPage_form_main_submit : styles.LoginPage_form_main_submit_unactive} mt-20 fs-16`}
                         onClick={() => {
                             username && password && login();
                         }}
-                    >{`Войти`}</div>
+                    >{`Войти`}</button>
                     {/* footer */}
                     <div
                         className={`${styles.LoginPage_form_footer_alt_back} mt-16`}
@@ -145,9 +149,10 @@ const LoginPage = () => {
                         className={`${styles.LoginPage_form_footer_create_back}`}
                     >
                         <span className="cdgray">{`Нет аккаунта?`}</span>
-                        <span
-                            className={`${styles.LoginPage_form_footer_create_span} cp ml-10`}
-                        >{`Создать`}</span>
+                        <button
+                            type="button"
+                            className={`${styles.LoginPage_form_footer_create_span} cp ml-10 fs-17`}
+                        >{`Создать`}</button>
                     </div>
                 </div>
             )}

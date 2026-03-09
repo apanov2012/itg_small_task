@@ -8,15 +8,13 @@ import {
     useGoodsStore
 } from "../stores/useGoodsStore";
 import { logout } from "../stores/useAuthStore";
-import Table from "../components/table/table";
+// import Table from "../components/table/table";
 import Pagination from "../components/pagination";
 import TableLoader from "../components/tableLoader";
-import SelectAllComponent from "../components/selectAllComponent";
-import SelectComponent from "../components/selectComponent";
-import GoodMultiTitle from "../components/goodMultiTitle";
-import TitleSortHandler from "../components/table/titleSortHandler";
-import type { IGoodOne, IGoodsTableConfig } from "../types";
+import { goodsTableConfig } from "../configs/goodsTableConfig";
 import AddGood from "../components/addGood";
+import AddNotify from "../components/addNotify";
+import VirtTable from "../components/table/virtTable";
 
 const GoodsPage = () => {
     const goodsList = useGoodsStore((state) => state.goodsList);
@@ -25,93 +23,8 @@ const GoodsPage = () => {
     const total = useGoodsStore((state) => state.total);
     const goodsIsLoading = useGoodsStore((state) => state.isLoading);
     const addGood = useGoodsStore((state) => state.addGood);
-    // const goodsColsProps: { [key: string]: any }[] = [
-    const goodsColsProps: IGoodsTableConfig<IGoodOne>[] = [
-        {
-            titleComponent: () => <SelectAllComponent />,
-            key: "id",
-            width: 60,
-            align: "center",
-            render: (item: number) => <SelectComponent id={item} />,
-            renderArg: "id"
-        },
-        {
-            titleComponent: () => (
-                <TitleSortHandler
-                    titleName={"Наименование"}
-                    itemSort="title"
-                    titleAlign="left"
-                />
-            ),
-            key: "title",
-            width: 450,
-            titleAlign: "left",
-            align: "left",
-            render: (item: [string, string, string[]]) => (
-                <GoodMultiTitle {...item} />
-            ),
-            renderArg: ["title", "category", "images"]
-        },
-        {
-            title: "Вендор",
-            key: "brand",
-            width: 200,
-            align: "center"
-        },
-        {
-            title: "Артикул",
-            key: "sku",
-            align: "center"
-        },
-        {
-            titleComponent: () => (
-                <TitleSortHandler
-                    titleName={"Оценка"}
-                    itemSort="rating"
-                    titleAlign="center"
-                />
-            ),
-            key: "rating",
-            align: "center",
-            render: (item: number) => (
-                <span>
-                    <span style={item < 3 ? { color: "red" } : {}}>{item}</span>
-                    <span>{`/5`}</span>
-                </span>
-            ),
-            renderArg: "rating"
-        },
-        {
-            titleComponent: () => (
-                <TitleSortHandler
-                    titleName={"Цена"}
-                    itemSort="price"
-                    titleAlign="center"
-                />
-            ),
-            key: "price",
-            width: 100,
-            align: "center"
-        },
-        {
-            width: 60,
-            align: "center",
-            render: () => (
-                <div
-                    className={`${styles.GoodsPage_main_fakeFrame_img} imgBack`}
-                ></div>
-            )
-        },
-        {
-            width: 40,
-            align: "center",
-            render: () => (
-                <div
-                    className={`${styles.GoodsPage_main_fakeCircle_img} imgBack`}
-                ></div>
-            )
-        }
-    ];
+    const addNotification = useGoodsStore((state) => state.addNotification);
+    ///
     return (
         <div className={`${styles.GoodsPage_back}`}>
             <div className={`${styles.GoodsPage_top_back} mt-20 pr-30 pl-30`}>
@@ -135,16 +48,18 @@ const GoodsPage = () => {
                         }}
                     />
                     {query && (
-                        <div
+                        <button
+                            type="button"
                             className={`${styles.GoodsPage_top_cancel_img} imgBack cp`}
                             onClick={() => setQuery("")}
-                        ></div>
+                        ></button>
                     )}
                 </div>
-                <div
+                <button
+                    type="button"
                     className={`${styles.GoodsPage_top_logout_img} imgBack cp`}
                     onClick={() => logout()}
-                ></div>
+                ></button>
             </div>
             <div
                 className={`${styles.GoodsPage_main_back} mt-30 pr-30 pl-30 pb-30 pt-30`}
@@ -152,11 +67,13 @@ const GoodsPage = () => {
                 <div className={`${styles.GoodsPage_main_title} bolder`}>
                     {`Все позиции`}
                     <div className={`${styles.GoodsPage_main_handlers_back}`}>
-                        <div
+                        <button
+                            type="button"
                             className={`${styles.GoodsPage_main_handlers_update_img} cp`}
                             onClick={() => updateGoodsList()}
-                        ></div>
-                        <div
+                        ></button>
+                        <button
+                            type="button"
                             className={`${styles.GoodsPage_main_handlers_add} cp ml-10`}
                             onClick={() => setAddGood(true)}
                         >
@@ -164,17 +81,24 @@ const GoodsPage = () => {
                                 className={`${styles.GoodsPage_main_handlers_add_img} imgBack`}
                             ></div>
                             <span>{`Добавить`}</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div
                     className={`${styles.GoodsPage_main_table_back} mt-40 pr-10`}
                 >
                     {goodsIsLoading && <TableLoader />}
-                    <Table
-                        colProps={goodsColsProps}
+
+                    {/* <Table
+                        colProps={goodsTableConfig}
                         data={goodsList}
                         onRowClick={selectGoodOne}
+                    /> */}
+                    <VirtTable
+                        colProps={goodsTableConfig}
+                        data={goodsList}
+                        onRowClick={selectGoodOne}
+                        rowHeight={70}
                     />
                 </div>
                 <div className={`${styles.GoodsPage_footer_back} mt-40`}>
@@ -188,6 +112,7 @@ const GoodsPage = () => {
                 </div>
             </div>
             {addGood && <AddGood />}
+            {addNotification && <AddNotify />}
         </div>
     );
 };

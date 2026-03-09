@@ -37,7 +37,8 @@ const Pagination = () => {
     }
     return (
         <div className={`${styles.Pagination_back}`}>
-            <div
+            <button
+                type="button"
                 className={`${styles.Pagination_left_img} imgBack cp`}
                 onClick={() =>
                     setOfftet(
@@ -46,12 +47,13 @@ const Pagination = () => {
                             : 0
                     )
                 }
-            ></div>
+            ></button>
             {Array.from(
                 { length: endPage - startPage + 1 },
                 (_, index) => startPage + index
             ).map((page) => (
-                <div
+                <button
+                    type="button"
                     key={page}
                     className={`${offset / paginationStep === page - 1 ? styles.Pagination_page_unactive : styles.Pagination_page} ml-8  ${offset / paginationStep === page - 1 ? "" : "cp"}`}
                     onClick={() => {
@@ -69,9 +71,10 @@ const Pagination = () => {
                     }
                 >
                     {page}
-                </div>
+                </button>
             ))}
-            <div
+            <button
+                type="button"
                 className={`${styles.Pagination_right_img} imgBack cp ml-8`}
                 onClick={() =>
                     setOfftet(
@@ -82,7 +85,7 @@ const Pagination = () => {
                                   paginationStep
                     )
                 }
-            ></div>
+            ></button>
         </div>
     );
 };

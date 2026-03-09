@@ -68,7 +68,7 @@ const GoodsTable = ({ colProps, data, onRowClick }: GoodsTableProps) => {
                         </tr>
                     </thead>
 
-                    <tbody style={{ overflowY: "scroll" }}>
+                    <tbody>
                         {data &&
                             data?.map((item) => (
                                 <tr

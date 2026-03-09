@@ -12,10 +12,11 @@ const AddGood = () => {
             <div className={`${styles.AddGood_back} `}>
                 <div className={`${styles.AddGood_top}  bold `}>
                     {`Добавление товара`}
-                    <div
+                    <button
+                        type="button"
                         className={`${styles.AddGood_top_cancel_img} imgBack cp`}
                         onClick={() => setAddGood(false)}
-                    ></div>
+                    ></button>
                 </div>
                 <div className={`${styles.AddGood_main_inputs}`}>
                     {/* наименование */}
@@ -42,10 +43,11 @@ const AddGood = () => {
                                 }
                             />
                             {fields.title && (
-                                <div
+                                <button
+                                    type="button"
                                     className={`${styles.LoginPage_form_main_item_input_cancel_img} imgBack cp`}
                                     onClick={() => setNewGoodField("title", "")}
-                                ></div>
+                                ></button>
                             )}
                         </div>
                     </div>
@@ -73,10 +75,11 @@ const AddGood = () => {
                                 }
                             />
                             {fields.brand && (
-                                <div
+                                <button
+                                    type="button"
                                     className={`${styles.LoginPage_form_main_item_input_cancel_img} imgBack cp`}
                                     onClick={() => setNewGoodField("brand", "")}
-                                ></div>
+                                ></button>
                             )}
                         </div>
                     </div>
@@ -104,10 +107,11 @@ const AddGood = () => {
                                 }
                             />
                             {fields.sku && (
-                                <div
+                                <button
+                                    type="button"
                                     className={`${styles.LoginPage_form_main_item_input_cancel_img} imgBack cp`}
                                     onClick={() => setNewGoodField("sku", "")}
-                                ></div>
+                                ></button>
                             )}
                         </div>
                     </div>
@@ -140,10 +144,11 @@ const AddGood = () => {
                                 }}
                             />
                             {fields.price && (
-                                <div
+                                <button
+                                    type="button"
                                     className={`${styles.LoginPage_form_main_item_input_cancel_img} imgBack cp`}
                                     onClick={() => setNewGoodField("price", "")}
-                                ></div>
+                                ></button>
                             )}
                         </div>
                     </div>
@@ -152,8 +157,9 @@ const AddGood = () => {
                     <span className="mr-10 cred">{`*`}</span>
                     {`- поля, обязательные для заполнения`}
                 </div>
-                <div
-                    className={`${fields.brand && fields.price && fields.sku && fields.title ? styles.AddGood_main_submit : styles.AddGood_main_submit_unactive} mt-20`}
+                <button
+                    type="button"
+                    className={`${fields.brand && fields.price && fields.sku && fields.title ? styles.AddGood_main_submit : styles.AddGood_main_submit_unactive} mt-20 fs-17`}
                     onClick={() => {
                         fields.brand &&
                             fields.price &&
@@ -161,7 +167,7 @@ const AddGood = () => {
                             fields.title &&
                             addNewGood();
                     }}
-                >{`Добавить`}</div>
+                >{`Добавить`}</button>
             </div>
         </div>
     );

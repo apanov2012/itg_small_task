@@ -1,9 +1,11 @@
+import React from "react";
 import styles from "@/App.module.css";
-const GoodMultiTitle = (data: [string, string, string[]]) => {
+const GoodMultiTitle = React.memo((data: [string, string, string[]]) => {
     return (
         <div className={`${styles.GoodMultiTitle}`}>
             {data[2][0] ? (
                 <img
+                    loading="lazy"
                     src={data[2][0]}
                     className={`${styles.GoodMultiTitle_image}`}
                     alt="X"
@@ -25,6 +27,6 @@ const GoodMultiTitle = (data: [string, string, string[]]) => {
             </div>
         </div>
     );
-};
+});
 
 export default GoodMultiTitle;
